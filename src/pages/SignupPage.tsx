@@ -11,7 +11,7 @@ const SignupPage = () => {
         <SignupForm />
         <p className="text-secondary flex justify-center mt-4">
           Already have an account!{" "}
-          <Link to="/auth/login" className="font-bold pl-3">
+          <Link to="/login" className="font-bold pl-3">
             Login
           </Link>
         </p>
