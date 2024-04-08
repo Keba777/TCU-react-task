@@ -1,9 +1,10 @@
+import SignupPage from "./pages/SignupPage";
 
 function App() {
   return (
-    <h1 className="text-3xl">
-      Start part
-    </h1>
+    <div>
+      <SignupPage />
+    </div>
   );
 }
 
