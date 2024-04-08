@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import User from "../types/user";
@@ -9,7 +10,7 @@ const LoginForm = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     setError,
   } = useForm<User>();
 
@@ -19,8 +20,18 @@ const LoginForm = () => {
     const { email, password } = data;
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      console.log("Successful login");
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      const userId = userCredential.user?.uid;
+      Cookies.set("userInfo", JSON.stringify({ email, userId }), {
+        expires: 7,
+        secure: true,
+      });
+
       reset();
       router("/");
     } catch (error: any) {
@@ -76,6 +87,7 @@ const LoginForm = () => {
       <div>
         <button
           type="submit"
+          disabled={isSubmitting}
           className="px-5 py-2 rounded-md bg-bluegray hover:bg-lightbluegray text-white w-full"
         >
           Login
