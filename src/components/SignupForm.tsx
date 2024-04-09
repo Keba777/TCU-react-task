@@ -79,7 +79,6 @@ const SignupForm = () => {
         >
           Signup
         </button>
-        <span>{errors.root?.message}</span>
       </div>
     </form>
   );

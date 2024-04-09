@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 
 import Cookies from "js-cookie";
+import NewPostPage from "./pages/NewPostPage";
 
 const AppRouter = () => {
   const isAuthenticated = !!Cookies.get("userInfo");
@@ -17,10 +18,10 @@ const AppRouter = () => {
         />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
-        {/* <Route
-          path="/posts"
-          element={isAuthenticated ? <PostsPage /> : <Navigate to="/login" />}
-        /> */}
+        <Route
+          path="/posts/new"
+          element={isAuthenticated ? <NewPostPage /> : <Navigate to="/login" />}
+        />
       </Routes>
     </BrowserRouter>
   );

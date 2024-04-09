@@ -1,27 +1,43 @@
 import Cookies from "js-cookie";
-import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 const HomePage = () => {
   const userInfoCookie = Cookies.get("userInfo");
   const userInfo = userInfoCookie ? JSON.parse(userInfoCookie) : null;
 
   return (
-    <main>
+    <div className="flex flex-col h-screen">
       <NavBar />
-      <div className="mt-6">
-        {userInfo ? (
-          <>
-            <p>Email: {userInfo.email}</p>
-            <p>User ID: {userInfo.userId}</p>
-          </>
-        ) : (
-          <p>No user information found</p>
-        )}
-      </div>
-      <h1 className="my-28">Home</h1>
+      <main className="flex-grow bg-gray-100 p-6">
+        <div className="max-w-3xl mx-auto">
+          {userInfo ? (
+            <>
+              <h1 className="text-3xl font-bold mb-4">Welcome</h1>
+              <p className="mb-4 text-secondary font-semibold">
+                {userInfo.email}
+              </p>
+              <Link
+                to="/profile"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
+              >
+                Edit Profile
+              </Link>
+              <Link
+                to="/posts"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                View Posts
+              </Link>
+            </>
+          ) : (
+            <p>No user information found</p>
+          )}
+        </div>
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 };
 
