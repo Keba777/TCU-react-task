@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 
 import Cookies from "js-cookie";
 import NewPostPage from "./pages/NewPostPage";
+import Feed from "./pages/Feed";
 
 const AppRouter = () => {
   const isAuthenticated = !!Cookies.get("userInfo");
@@ -18,6 +19,10 @@ const AppRouter = () => {
         />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/posts"
+          element={isAuthenticated ? <Feed /> : <Navigate to="/login" />}
+        />
         <Route
           path="/posts/new"
           element={isAuthenticated ? <NewPostPage /> : <Navigate to="/login" />}
