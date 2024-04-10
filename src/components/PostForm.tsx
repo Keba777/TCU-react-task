@@ -1,41 +1,16 @@
 import { useForm } from "react-hook-form";
 import Post from "../types/post";
-import { useNavigate } from "react-router-dom";
-import { db } from "../firebase";
-import { collection, addDoc } from "firebase/firestore";
-import Cookies from "js-cookie";
 
-const PostForm = () => {
+interface Props {
+  onSubmit: (data: Post) => Promise<void>;
+}
+
+const PostForm = ({ onSubmit }: Props) => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors, isSubmitting },
   } = useForm<Post>();
-
-  const router = useNavigate();
-
-  const onSubmit = async (data: Post) => {
-    try {
-      const userId = Cookies.get("userInfo")
-        ? JSON.parse(Cookies.get("userInfo")!).userId
-        : "";
-
-      if (!userId) {
-        console.error("User ID not found in cookie");
-        return;
-      }
-
-      const postData = { ...data, userId };
-
-      const docRef = await addDoc(collection(db, "posts"), postData);
-      console.log("Document written with ID: ", docRef.id);
-      reset();
-      router("/");
-    } catch (error) {
-      console.error("Error adding document: ", error);
-    }
-  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="bg-transparent">

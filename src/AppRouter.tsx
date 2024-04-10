@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import SignupPage from "./pages/Signup";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/Home";
 import LoginPage from "./pages/Login";
 import Cookies from "js-cookie";
-import NewPostPage from "./pages/NewPostPage";
+import NewPostPage from "./pages/NewPost";
 import Feed from "./pages/Feed";
 import Profile from "./pages/Profile";
 import EditPost from "./pages/EditPost";
