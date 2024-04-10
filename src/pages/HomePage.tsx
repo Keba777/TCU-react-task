@@ -26,9 +26,15 @@ const HomePage = () => {
               </Link>
               <Link
                 to="/posts"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-4"
               >
                 View Posts
+              </Link>
+              <Link
+                to="/posts/new"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "
+              >
+                Add Post
               </Link>
             </>
           ) : (
