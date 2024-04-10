@@ -1,41 +1,20 @@
 import { useForm } from "react-hook-form";
-import {
-  sendEmailVerification,
-  updateEmail,
-  updatePassword,
-} from "firebase/auth";
-import { auth } from "../firebase";
 import User from "../types/user";
 
-const ProfileForm = () => {
+interface Props {
+  btnLabel: string;
+  onSubmit: (data: User) => Promise<void>;
+}
+
+const AuthForm = ({ btnLabel, onSubmit }: Props) => {
   const {
     register,
     handleSubmit,
-    reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<User>();
 
-  const onSubmit = async (data: User) => {
-    try {
-      if (data.email) {
-        await sendEmailVerification(auth.currentUser!);
-        await updateEmail(auth.currentUser!, data.email);
-      }
-      if (data.password) {
-        await updatePassword(auth.currentUser!, data.password);
-      }
-      console.log("Profile updated successfully");
-      reset();
-    } catch (error: any) {
-      console.error("Failed to update profile", error);
-    }
-  };
-
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="px-6 py-4 bg-white mx-4 rounded-xl"
-    >
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-3">
         <label htmlFor="email" className="text-secondary font-semibold">
           Email
@@ -43,6 +22,7 @@ const ProfileForm = () => {
         <input
           type="email"
           id="email"
+          placeholder="Example@gmail.com"
           {...register("email", { required: "Email is required" })}
           className="focus:outline-none w-full bg-background px-5 py-2 rounded-sm mb-4"
         />
@@ -57,7 +37,14 @@ const ProfileForm = () => {
         <input
           type="password"
           id="password"
-          {...register("password", { required: "Password is required" })}
+          placeholder="Password123"
+          {...register("password", {
+            required: "Password is required",
+            minLength: {
+              value: 6,
+              message: "Password must be at least 6 characters long",
+            },
+          })}
           className="focus:outline-none w-full bg-background px-5 py-2 rounded-sm mb-6"
         />
         {errors.password && (
@@ -67,13 +54,14 @@ const ProfileForm = () => {
       <div>
         <button
           type="submit"
+          disabled={isSubmitting}
           className="px-5 py-2 rounded-md bg-bluegray hover:bg-lightbluegray text-white w-full"
         >
-          Update Profile
+          {btnLabel}
         </button>
       </div>
     </form>
   );
 };
 
-export default ProfileForm;
+export default AuthForm;

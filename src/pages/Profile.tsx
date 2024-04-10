@@ -1,13 +1,38 @@
+import {
+  sendEmailVerification,
+  updateEmail,
+  updatePassword,
+} from "firebase/auth";
 import { deleteDoc, doc } from "firebase/firestore";
 import Cookies from "js-cookie";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import AuthForm from "../components/AuthForm";
 import Card from "../components/Card";
 import NavBar from "../components/NavBar";
-import ProfileForm from "../components/ProfileForm";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 import usePosts from "../hooks/usePosts";
+import User from "../types/user";
 
 const Profile = () => {
+  const { reset } = useForm<User>();
+
+  const onSubmit = async (data: User) => {
+    try {
+      if (data.email) {
+        await sendEmailVerification(auth.currentUser!);
+        await updateEmail(auth.currentUser!, data.email);
+      }
+      if (data.password) {
+        await updatePassword(auth.currentUser!, data.password);
+      }
+      console.log("Profile updated successfully");
+      reset();
+    } catch (error: any) {
+      console.error("Failed to update profile", error);
+    }
+  };
+
   const userInfoCookie = Cookies.get("userInfo");
   const userInfo = userInfoCookie ? JSON.parse(userInfoCookie) : null;
 
@@ -37,7 +62,9 @@ const Profile = () => {
       <section className="py-4 grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto max-w-7xl">
         <div className="md:col-span-1">
           <h2 className="font-semibold text-xl ml-8 mb-6">{userInfo.email}</h2>
-          <ProfileForm />
+          <div className="px-6 py-4 bg-white mx-4 rounded-xl">
+            <AuthForm onSubmit={onSubmit} btnLabel="Update Profile" />
+          </div>
         </div>
         <div className="md:col-span-2 px-6">
           <h2 className="text-3xl font-bold text-bluegray flex justify-center mb-4">
