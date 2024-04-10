@@ -6,7 +6,7 @@ const LoginPage = () => {
     <div className=" flex flex-col justify-center items-center my-6">
       <div className="w-5/6 sm:w-2/3 md:w-1/2 lg:w-2/5 bg-white px-6 sm:px-8 md:px-10 py-8 sm:py-10 rounded-md">
         <h2 className="flex justify-center font-bold text-4xl text-bluegray mb-4">
-          Signup
+          Login
         </h2>
         <LoginForm />
         <p className="text-secondary flex justify-center mt-4">
