@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import AuthForm from "../components/AuthForm";
+import AuthForm from "../../components/auth/AuthForm";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
-import User from "../types/user";
+import { auth } from "../../firebase";
+import User from "../../types/user";
 import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 

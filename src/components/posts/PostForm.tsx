@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import Post from "../types/post";
+import Post from "../../types/post";
 
 interface Props {
   onSubmit: (data: Post) => Promise<void>;

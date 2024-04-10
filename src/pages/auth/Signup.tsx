@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import AuthForm from "../components/AuthForm";
+import AuthForm from "../../components/auth/AuthForm";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../../firebase";
 import { useForm } from "react-hook-form";
-import User from "../types/user";
+import User from "../../types/user";
 
 const SignupPage = () => {
   const { reset, setError } = useForm<User>();

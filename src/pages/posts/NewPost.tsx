@@ -2,9 +2,9 @@ import { addDoc, collection } from "firebase/firestore";
 import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import PostForm from "../components/PostForm";
-import { db } from "../firebase";
-import Post from "../types/post";
+import PostForm from "../../components/posts/PostForm";
+import { db } from "../../firebase";
+import Post from "../../types/post";
 
 const NewPostPage = () => {
   const { reset } = useForm<Post>();

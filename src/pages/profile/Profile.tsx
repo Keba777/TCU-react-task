@@ -7,12 +7,12 @@ import { deleteDoc, doc } from "firebase/firestore";
 import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import AuthForm from "../components/AuthForm";
-import Card from "../components/Card";
-import NavBar from "../components/NavBar";
-import { auth, db } from "../firebase";
-import usePosts from "../hooks/usePosts";
-import User from "../types/user";
+import AuthForm from "../../components/auth/AuthForm";
+import Card from "../../components/posts/Card";
+import NavBar from "../../components/common/NavBar";
+import { auth, db } from "../../firebase";
+import usePosts from "../../hooks/usePosts";
+import User from "../../types/user";
 
 const Profile = () => {
   const { reset } = useForm<User>();

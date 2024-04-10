@@ -1,8 +1,8 @@
 import { doc, updateDoc } from "firebase/firestore";
 import { useParams, useNavigate } from "react-router-dom";
-import PostForm from "../components/PostForm";
-import { db } from "../firebase";
-import Post from "../types/post";
+import PostForm from "../../components/posts/PostForm";
+import { db } from "../../firebase";
+import Post from "../../types/post";
 
 const EditPost = () => {
   const { id } = useParams<{ id: string }>();

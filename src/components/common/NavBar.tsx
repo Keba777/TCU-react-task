@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 const links = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/" },
   { label: "Posts", href: "/posts" },
   { label: "Profile", href: "/profile" },
 ];

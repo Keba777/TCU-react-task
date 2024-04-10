@@ -1,4 +1,4 @@
-import Post from "../types/post";
+import Post from "../../types/post";
 
 const Card = ({ post }: { post: Post }) => {
   return (

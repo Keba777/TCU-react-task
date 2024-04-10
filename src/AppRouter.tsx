@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import SignupPage from "./pages/Signup";
+import SignupPage from "./pages/auth/Signup";
 import HomePage from "./pages/Home";
-import LoginPage from "./pages/Login";
+import LoginPage from "./pages/auth/Login";
 import Cookies from "js-cookie";
-import NewPostPage from "./pages/NewPost";
-import Feed from "./pages/Feed";
-import Profile from "./pages/Profile";
-import EditPost from "./pages/EditPost";
+import NewPostPage from "./pages/posts/NewPost";
+import Feed from "./pages/posts/Feed";
+import Profile from "./pages/profile/Profile";
+import EditPost from "./pages/posts/EditPost";
 
 const AppRouter = () => {
   const isAuthenticated = !!Cookies.get("userInfo");

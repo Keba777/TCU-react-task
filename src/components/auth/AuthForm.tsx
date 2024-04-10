@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import User from "../types/user";
+import User from "../../types/user";
 
 interface Props {
   btnLabel: string;
