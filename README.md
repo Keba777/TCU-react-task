@@ -1,46 +1,64 @@
-# Getting Started with Create React App
+# My React.js Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This is a simple React.js application developed as part of a Frontend Developer assessment test. The application includes features such as user authentication, user profiles, and post management.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+### User Authentication
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Implemented a login screen with email and password fields.
+- Users can sign up for a new account using secure authentication methods.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### User Profiles
 
-### `npm test`
+- Upon successful login, users can view their profile information (username and email) in a dedicated profile section/page.
+- Users have the capability to edit their profile information.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Post Management
 
-### `npm run build`
+- Created a screen to display a feed of posts from other users.
+- Users can create, edit, and delete their own posts.
+- Implemented infinite scrolling to dynamically load more posts as the user scrolls down the feed.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technologies Used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- React.js
+- TypeScript
+- Tailwind CSS
+- Firebase (Backend)
+- @tanstack/react-query
+- react-hook-form
+- react-router-dom
+- react-perfect-scrollbar
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Setup Instructions
 
-### `npm run eject`
+1. Clone the repository to your local machine.
+2. Navigate to the project directory.
+3. Run `npm install` to install dependencies.
+4. Configure Firebase by adding the following environment variables to the `.env` file:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+REACT_APP_FIREBASE_API_KEY=<Your Firebase API Key>
+REACT_APP_FIREBASE_AUTH_DOMAIN=<Your Firebase Auth Domain>
+REACT_APP_FIREBASE_PROJECT_ID=<Your Firebase Project ID>
+REACT_APP_FIREBASE_STORAGE_BUCKET=<Your Firebase Storage Bucket>
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=<Your Firebase Messaging Sender ID>
+REACT_APP_FIREBASE_APP_ID=<Your Firebase App ID>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. Run `npm start` to start the development server.
+6. Access the application in your web browser at `http://localhost:3000`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Additional Notes
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- The application has been tested for functionality and responsiveness across different devices and screen sizes.
 
-## Learn More
+## Link
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Deployed Application: [https://tcu-react-task.vercel.app/](https://tcu-react-task.vercel.app/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+
